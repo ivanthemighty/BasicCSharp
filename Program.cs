@@ -1,33 +1,56 @@
 ﻿using System;
 
-namespace SwapNumbers
+namespace RealCalculator
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Swap numbers");
+            Console.Write("Enter a number: ");
+            string num1 = Console.ReadLine();
+            Console.Write("Enter a number: ");
+            string num2 = Console.ReadLine();
 
-            string input1, input2;
-            Console.Write("Enter First number: ");
-            input1 = Console.ReadLine();
-            Console.Write("Enter Second number: ");
-            input2 = Console.ReadLine();
-            bool check1 = int.TryParse(input1, out int number1);
-            bool check2 = int.TryParse(input2, out int number2);
+            bool check1 = double.TryParse(num1, out double number1);
+            bool check2 = double.TryParse(num2, out double number2);
 
             if (check1 && check2)
             {
+                Console.WriteLine();
+                Console.WriteLine("Choose operation ( +, - , * , / )");
+                Console.Write("Enter an operator: ");
+                string operation = Console.ReadLine();
+                double res;
 
-                int temp = number1;
-                number1 = number2;
-                number2 = temp;
+                switch (operation)
+                {
+                    case "+":
+                        res = number1 + number2;
+                        Console.WriteLine(number1 + " + " + number2 + " = " + res);
+                        break;
+                    case "-":
+                        res = number1 - number2;
+                        Console.WriteLine(number1 + " - " + number2 + " = " + res);
+                        break;
+                    case "*":
+                        res = number1 * number2;
+                        Console.WriteLine(number1 + " * " + number2 + " = " + res);
+                        break;
+                    case "/":
+                        res = number1 / number2;
+                        Console.WriteLine(number1 + " / " + number2 + " = " + res);
+                        break;
+                    default:
+                        Console.Write("Wrong operator");
+                        break;
+                }
 
-                Console.WriteLine("First number: " + number1);
-                Console.WriteLine("Second number: " + number2);
             }
             else
+            {
                 Console.WriteLine("Wrong input");
+            }
         }
     }
 }
+
