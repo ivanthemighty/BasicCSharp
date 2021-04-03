@@ -1,56 +1,35 @@
 ﻿using System;
 
-namespace RealCalculator
+namespace Homework3
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter a number: ");
-            string num1 = Console.ReadLine();
-            Console.Write("Enter a number: ");
-            string num2 = Console.ReadLine();
+            string statement = "We are learning C# and it is FUN and EASY.   Okay maybe just FUN.  ";
+            Console.WriteLine(Substring(statement));
+            Console.WriteLine(Substring2(statement));
+        }
 
-            bool check1 = double.TryParse(num1, out double number1);
-            bool check2 = double.TryParse(num2, out double number2);
+        static string Substring(string sentence)
+        {
+            const int MaxLength = 5;
 
-            if (check1 && check2)
-            {
-                Console.WriteLine();
-                Console.WriteLine("Choose operation ( +, - , * , / )");
-                Console.Write("Enter an operator: ");
-                string operation = Console.ReadLine();
-                double res;
+            if (sentence.Length > MaxLength)
+                sentence = sentence.Substring(0, MaxLength);
 
-                switch (operation)
-                {
-                    case "+":
-                        res = number1 + number2;
-                        Console.WriteLine(number1 + " + " + number2 + " = " + res);
-                        break;
-                    case "-":
-                        res = number1 - number2;
-                        Console.WriteLine(number1 + " - " + number2 + " = " + res);
-                        break;
-                    case "*":
-                        res = number1 * number2;
-                        Console.WriteLine(number1 + " * " + number2 + " = " + res);
-                        break;
-                    case "/":
-                        res = number1 / number2;
-                        Console.WriteLine(number1 + " / " + number2 + " = " + res);
-                        break;
-                    default:
-                        Console.Write("Wrong operator");
-                        break;
-                }
+            Console.WriteLine(sentence.Length);
+            return sentence;
+        }
 
-            }
-            else
-            {
-                Console.WriteLine("Wrong input");
-            }
+        static string Substring2(string sentence)
+        {
+            sentence = sentence.Replace(" ", String.Empty);
+            const int MaxLength = 5;
+            if (sentence.Length > MaxLength)
+                sentence = sentence.Substring(0, MaxLength);
+            Console.WriteLine(sentence.Length);
+            return sentence;
         }
     }
 }
-
